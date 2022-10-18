@@ -2,16 +2,21 @@ export default[
     {
         name :'Lion',
         size :200,
-        diet :['meat']
+        diet :['meat'],
+        scientificName:'panthera leo'
     },
     {
         name :'Gorilla',
         size :600,
-        diet :['vegetation','insect']
+        diet :['grass','insect'],
+        scientificName:'la gorilla'
+
     },
     {
         name :'cow',
         size :200,
-        diet :['grass','dairy meal']
+        diet :['grass','dairy meal'],
+        scientificName:'la cow la busia'
+
     }
 ]
