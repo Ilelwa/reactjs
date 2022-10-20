@@ -1,33 +1,57 @@
 import { render } from '@testing-library/react';
 import React,{Component, component} from 'react';
 import './Product.css';
-
+const products = [
+    {
+      emoji: '🍦',
+      name: 'ice cream',
+      price: 5
+    },
+    {
+      emoji: '🍩',
+      name: 'donuts',
+      price: 2.5,
+    },
+    {
+      emoji: '🍉',
+      name: 'watermelon',
+      price: 4
+    }
+  ];
+  
 export default class Product extends Component {
     state = {
         cart : [],
-        total:0 
     }
     //2dp on currency
     currencyPoint = {
         minimumFractionDigit:2,
         maximumFractionDigit:2,
     }
-    //add to cart
-    add = () =>{
-        this.setState({
-            cart:['ice cream'],
-            total:5
-        })
+    //add to item to cart calculate total price
+    add = (product) =>{
+        this.setState(state =>({
+            cart:[...state.cart,product],
+        }))
     }
     //remove from cart
-    remove = () =>{
-        this.setState({
-            cart:[],
-            total:0
+    remove = (product) =>{
+        this.setState(state =>{
+            const cart = [...state.cart];
+            const productIndex = cart.findIndex(p => p.name === product.name)
+            if (productIndex <0){
+                return;
+            } 
+            cart.splice(productIndex,1)
+            return({
+                cart,
+                }
+            )
         })
     }
     getTotal = () =>{
-        return this.state.total.toLocaleString(undefined,this.currencyPoint)
+        const total = this.state.cart.reduce((totalCost,item) =>totalCost + item.price,0)
+        return total.toLocaleString(undefined,this.currencyPoint)
     }
 
     render() {
@@ -35,9 +59,19 @@ export default class Product extends Component {
             <div className='wrapper'>
                 <div>Cart has: {this.state.cart.length} items</div>
                 <div>Total: {this.getTotal()}</div>
-                <div className='product'><span role='img' aria-label='ice cream'>🍦</span> </div>
-                <button onClick={this.add}>Add</button>
-                <button onClick={this.remove}>Remove</button>
+                <div>
+                    {products.map(product =>(
+                        <div key={product.name}>
+                            <div className='product'>
+                                <span role='img' aria-label={product.name}>{product.emoji}</span>
+                            </div>
+                            <button onClick={() => this.add(product)}>Add</button>
+                            <button onClick={() => this.remove(product)}>Remove</button>
+                        </div>
+                    ))}
+                    
+                </div>
+                
             </div>
         )
     }
