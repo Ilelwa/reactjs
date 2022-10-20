@@ -1,4 +1,4 @@
-export default[
+const data = [
     {
         name :'Lion',
         size :200,
@@ -20,3 +20,4 @@ export default[
 
     }
 ]
+export default data;

@@ -1,0 +1,5 @@
+.error-wrapper{
+    border-top:pink solid 2px;
+    display:flex;
+    flex-wrap: wrap;
+}
