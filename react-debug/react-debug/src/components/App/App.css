@@ -1,0 +1,12 @@
+.wrapper{
+  padding: 20px;
+}
+.wrapper button{
+  background: white;
+  cursor:pointer;
+  border:grey solid 1px;
+  margin-right: 10px;
+}
+.wrapper div{
+  margin: 20px 0;
+}
