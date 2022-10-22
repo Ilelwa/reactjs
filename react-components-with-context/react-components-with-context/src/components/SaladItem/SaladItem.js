@@ -1,5 +1,7 @@
 import { createUseStyles } from "react-jss";
 import PropTypes from 'prop-types';
+import { useContext } from "react";
+import UserContext from "../User/User";
 
 //jss styling
 const useStyles = createUseStyles({
@@ -31,8 +33,11 @@ const useStyles = createUseStyles({
 })
 
 export default function SaladItem({name,image}){
+    //match favorite salad to user in context 
+    const user = useContext(UserContext);
     const classes = useStyles();
-    const favorite= true;
+    const favorite= user.favorites.includes(name);
+    console.log('im name',{name});
 //return name of salad,if its favorite and image of salad
     return(
         <div className={classes.wrapper}>

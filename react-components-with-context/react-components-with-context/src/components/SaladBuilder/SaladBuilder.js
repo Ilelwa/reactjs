@@ -39,14 +39,15 @@ const ingredients = [
 export default function SaladBuilder(){
     const classes = useStyles();
 
-    return(
-        <div className={classes.wrapper}>
-            
-            {ingredients.map(ingredient => (
-             <SaladItem key={ingredient.name}
-                name={ingredient.name}
-                image={ingredient.image}/> 
-             ))}
-        </div>
+    return(      
+      <div className={classes.wrapper}>
+        {
+        ingredients.map(ingredient => (
+          <SaladItem 
+            key={ingredient.name}
+            name={ingredient.name}
+            image={ingredient.image}/> 
+          ))}
+      </div>
     )
 }
