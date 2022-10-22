@@ -1,4 +1,6 @@
 import { createUseStyles } from "react-jss";
+import { useContext } from "react";
+import { SaladContext } from "../SaladMaker/SaladMaker";
 
 const useStyles = createUseStyles({
     wrapper:{
@@ -19,13 +21,12 @@ const useStyles = createUseStyles({
 
 export default function SaladSummary() {
     const classes = useStyles();
-
+    const {salad} = useContext(SaladContext);
+    //return a list from state selected by user as favorite salad
     return(
         <div className={classes.wrapper}>
             <ul className={classes.list}>
-                <li>Mangoes</li>
-                <li>Tomatoes</li>
-                <li>Cabbage</li>
+               {salad.map(({name,id}) => (<li key = {id}>{name}</li>))}
             </ul>
         </div>
     )

@@ -3,7 +3,7 @@ import SaladMaker from "../SaladMaker/SaladMaker";
 import UserContext from "../User/User";
 const user ={
   name:'Johannes',
-  favorites:['Apple','carrot']
+  favorites:['apple','carrot']
 }
 function App() {
   return (
