@@ -60,36 +60,42 @@ function App() {
       
     }
     <form onSubmit={handleSubmit}>
-      <fieldset>
+      <fieldset disabled = {submitting}>
         <label> 
           <p>Name</p>
           <input name='name' onChange={handleChange} value ={formData.name || ''}/>
         </label>
       </fieldset>
-      <fieldset>
+      <fieldset disabled = {submitting}>
         <label>
           <p>Select Apple</p>
           <select name= 'apple' onChange={handleChange} value={formData.apple || ''}>
             <option value=''>Choose an option</option>
-            <option value='Fuji'>Fuji</option>
+            <option value='fuji'>Fuji</option>
             <option value='jonathan'>jonath</option>
             <option value='honey-crisp'>honey-crisp</option>
           </select>
         </label>
       </fieldset>
-      <fieldset>
+      <fieldset disabled = {submitting}>
         <label>
           <p>Count</p>
           <input type='number' name = 'count' onChange={handleChange} step='1' value={formData.count || ''} />
         </label>
       </fieldset>
-      <fieldset>
+      <fieldset disabled = {submitting}>
         <label>
           <p>Gift wrap</p>
-          <input type='checkbox' name='gift-wrap' onChange={handleChange} checked={formData['gift-wrap'] || false}/>
+          <input 
+            type='checkbox' 
+            name='gift-wrap' 
+            onChange={handleChange} 
+            checked={formData['gift-wrap'] || false}
+            disabled = {formData.apple !== 'fuji'}
+            />
         </label>
       </fieldset>
-      <button>Submit</button>
+      <button type = 'submit' disabled = {submitting}>Submit</button>
     </form>
    </div>
   );
